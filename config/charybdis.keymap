@@ -135,4 +135,26 @@
             >;
         };
     };
+
+
+/* БЛОК АКТИВАЦИИ ФУНКЦИЙ ТРЕКБОЛА */
+    trackball_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball>;
+
+        /* 1. AUTO-MOUSE: при движении шарика включается Слой 3 на 1000 мс */
+        input-processors = <&zip_temp_layer 1 1000>;
+
+        /* 2. DRAG SCROLL: превращает движение в скролл, когда активен Слой 4 */
+        scroller {
+            layers = <2>;
+            input-processors = <&zip_xy_to_scroll_mapper>;
+        };
+
+        /* 3. SNIPER MODE: замедляет курсор в 3 раза, когда активен Слой 5 */
+        sniper {
+            layers = <3>;
+            input-processors = <&zip_xy_scaler 1 3>;
+        };
+    };
 };
