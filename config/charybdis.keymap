@@ -3,6 +3,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/pointing.h>
 
 #define DEFAULT 0
 #define NUMBER  1
@@ -117,10 +118,10 @@
         fn_layer {
             label = "FN";
             bindings = <
-&sys_reset  &none         &kp UP_ARROW    &none         &none         &bt BT_CLR    &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp PLUS      &kp C_PREV         &kp C_NEXT
-&none       &kp LEFT      &kp DOWN_ARROW  &kp RIGHT     &none         &out OUT_USB  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp PERIOD    &kp K_MUTE         &kp C_PP
-&kp HOME    &kp C_BRI_DN  &kp C_BRI_UP    &kp K_FIND    &none         &out OUT_BLE  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_0  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP
-                                          &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &none         &bt BT_SEL 3  &none
+&sys_reset  &none         &kp UP_ARROW    &none          &none         &bt BT_CLR    &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp PLUS      &kp C_PREV         &kp C_NEXT
+&none       &kp LEFT      &kp DOWN_ARROW  &kp RIGHT      &none         &out OUT_USB  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp PERIOD    &kp C_MUTE         &kp C_PP
+&kp HOME    &kp C_BRI_DN  &kp C_BRI_UP    &kp C_AC_FIND  &none         &out OUT_BLE  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_0  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP
+                                          &bt BT_SEL 0   &bt BT_SEL 1  &bt BT_SEL 2  &none         &bt BT_SEL 3  &none
             >;
         };
 
@@ -135,22 +136,25 @@
         };
     };
 
+    /* БЛОК АКТИВАЦИИ ФУНКЦИЙ ТРЕКБОЛА */
 
-/* БЛОК АКТИВАЦИИ ФУНКЦИЙ ТРЕКБОЛА */
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
 
         /* 1. AUTO-MOUSE: при движении шарика включается Слой 3 на 1000 мс */
+
         input-processors = <&zip_temp_layer 1 1000>;
 
         /* 2. DRAG SCROLL: превращает движение в скролл, когда активен Слой 4 */
+
         scroller {
             layers = <2>;
             input-processors = <&zip_xy_to_scroll_mapper>;
         };
 
         /* 3. SNIPER MODE: замедляет курсор в 3 раза, когда активен Слой 5 */
+
         sniper {
             layers = <3>;
             input-processors = <&zip_xy_scaler 1 3>;
