@@ -14,7 +14,7 @@
 / {
     
 
-    combos {
+combos {
         compatible = "zmk,combos";
 
 
@@ -97,7 +97,7 @@
         };
     };
 
-    keymap {
+keymap {
         compatible = "zmk,keymap";
 
         default_layer {
