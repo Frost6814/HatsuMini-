@@ -1,9 +1,8 @@
-#include <dt-bindings/zmk/mouse.h>
 #include <behaviors.dtsi>
+#include <dt-bindings/zmk/mouse.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
-#include <dt-bindings/zmk/pointing.h>
 
 #define DEFAULT 0
 #define NUMBER  1
@@ -14,7 +13,7 @@
     combos {
         compatible = "zmk,combos";
 
-        QW {
+         QW {
             timeout-ms = <50>;
             key-positions = <2 1>; // KP: VB
             bindings = <&kp RS(LC(TILDE))>;
