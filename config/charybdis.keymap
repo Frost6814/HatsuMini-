@@ -1,8 +1,9 @@
-#include <behaviors.dtsi>
 #include <dt-bindings/zmk/mouse.h>
+#include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/pointing.h>
 
 #define DEFAULT 0
 #define NUMBER  1
@@ -13,7 +14,7 @@
     combos {
         compatible = "zmk,combos";
 
-         QW {
+        QW {
             timeout-ms = <50>;
             key-positions = <2 1>; // KP: VB
             bindings = <&kp RS(LC(TILDE))>;
@@ -97,9 +98,9 @@
         default_layer {
             label = "DEFAULT";
             bindings = <
-&kp CAPSLOCK  &mt TILDE Q  &kp W  &kp E                   &kp R               &kp T        &kp Y      &kp U                   &kp I      &kp O    &mt DELETE P  &kp LEFT_BRACKET
-&kp TAB       &kp A        &kp S  &kp D                   &lt 3 F             &kp G        &kp H      &kp J                   &kp K      &kp L    &kp SEMI      &kp SQT
-&kp LSHFT     &kp Z        &kp X  &kp C                   &kp V               &kp B        &kp N      &kp M                   &kp COMMA  &kp DOT  &kp FSLH      &kp RIGHT_BRACKET
+&kp CAPSLOCK  &mt TILDE Q  &kp W  &kp E                   &kp R               &kp T        &kp Y      &kp U                   &kp I      &kp O    &mt DELETE P             &kp LEFT_BRACKET
+&kp TAB       &kp A        &kp S  &kp D                   &lt 3 F             &kp G        &kp H      &kp J                   &kp K      &kp L    &kp SEMI                 &mt TILDE SQT
+&kp LSHFT     &kp Z        &kp X  &kp C                   &kp V               &kp B        &kp N      &kp M                   &kp COMMA  &kp DOT  &mt LS(BACKSLASH) SLASH  &kp RIGHT_BRACKET
                                   &mt LCTRL LS(LEFT_ALT)  &mt LEFT_ALT SPACE  &lt 1 ENTER  &lt 2 ESC  &mt LEFT_GUI BACKSPACE  &none
             >;
         };
@@ -127,10 +128,10 @@
         hotkey_layer {
             label = "HOTKEY";
             bindings = <
-&none  &none  &none  &none     &none      &none      &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none     &none      &none      &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none     &none      &none      &none  &none  &none  &none  &none  &none
-                     &mkp MB5  &mkp LCLK  &mkp RCLK  &none  &none  &none
+&none           &none         &none         &none     &none      &none      &none  &none  &none  &none  &none  &none
+&kp LEFT_SHIFT  &none         &none         &none     &none      &none      &none  &none  &none  &none  &none  &none
+&kp LCTRL       &kp LEFT_WIN  &kp LEFT_ALT  &none     &none      &none      &none  &none  &none  &none  &none  &none
+                                            &mkp MB5  &mkp LCLK  &mkp RCLK  &none  &none  &none
             >;
         };
     };
